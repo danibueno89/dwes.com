@@ -295,9 +295,71 @@
 
 
     } while (true);
+
+    // Generar números aleatorios ntre 1 y 10. Sumar los pares hasta 
+    // que la suma sea superior a 100 o se hayan generado 20 números
+
+    echo "<h3>GENERAR NÚMEROS PARES</h3>";
+
+    $suma_pares = 0;
+    $contador = 20;
+
+    while (True) {
+        $numero = rand(1,10);
+        
+        if ($numero % 2 == 0)
+            $suma_pares += 0;
+
+        if ($suma_pares > 100) break;
+
+        if ($contador == 20) break;
+
+        $contador++;
+    }
+
+    echo "<p>Se han generado $contador números y la suma de los pares es $suma_pares</p>";
+
+    // Generar 200 números aleatorios entre 1 y 1000. Por cada número se comprueba
+    // cuántos números primos hay desde 1 hasta ese número. Si hay más de 10 números
+    // primos que termine. Al final visualizar cada número generado y los primos
+    // hasta ese número
+
+    for ($numeroDe200 = 0; $numeroDe200 < 200; $numeroDe200++) {
+        $numero = rand(1,1000);
+        $cantidadPrimos = 0;
+
+        echo "<p>El número generado es $numero: Primos:</p>";
+
+        for ($posiblePrimo = 1; $posiblePrimo < $numero; $posiblePrimo++) {
+
+            // Comprobar si $posiblePrimo es número primo
+            $es_primo = true;
+            $raiz_cuadrada = sqrt($posiblePrimo);
+            $maximoCoincidenciasPrimos = 2; // TODO
+
+            while ($es_primo && $maximoCoincidenciasPrimos < sqrt($posiblePrimo)) {
+                if ($posiblePrimo % $maximoCoincidenciasPrimos == 0) $es_primo = false;
+                $maximoCoincidenciasPrimos++;
+            }
+
+            if ($es_primo) {
+                echo " $posiblePrimo";
+                $cantidadPrimos++;
+
+                if ($cantidadPrimos > 10) break 2; // Break 2 sale del anterior bucle del que se encuentra
+            }
+
+        }   
+
+        echo "<br>";    
+    }
+
+    // Genera 10 números aleatorios
+    // POr cada uno genera tantos caracteres en minúscula aleatorios como ese número
+    // Si alguno de los caracteres generados es z se acaba y no se generan
+
+    echo "<p>" . chr(97) . "</p>";
 ?>
-
-
 </body>
 
 </html>
