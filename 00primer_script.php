@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primer script</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src='main.js'></script>
-    <noscript>No tienes soporte de javascript</noscript>
 </head>
+
 <body>
     <h1>Primer Script</h1>
-    
-
-<?php
+    <hr>
+    <?php
     // Script: 00primer_script.php 
-    echo "esto es un cript php <br>";
-    echo "esto ejecuta el motor de php<br>";
+    echo "<p>esto es un script php</p>";
+    echo "<p>esto ejecuta el motor de php</p>";
 
-    //sentencia compleja
+    // Sentencia compleja
     {
-        echo "primera sentencia en bloque <br>"; // se puede comentar en cualquier sitio
-        echo "segunda sentencia en bloque <br>";
+        echo "<p>primera sentencia en bloque</p>"; // Se puede comentar en cualquier sitio
+        echo "<p>segunda sentencia en bloque</p>";
 
         /*comentario
-        multi linea */
+        multi liínea */
 
-        #tambien se puede comentar asi
+        # También se puede comentar asi
     }
-?>
-<hr>
-<p>Fin del script</p>
+    ?>
 </body>
+
 </html>
