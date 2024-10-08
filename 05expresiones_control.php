@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -241,14 +242,14 @@
     for ($i = 10, $j = 0; $i >= 5 and $j < 8; $i--, $j += 2) {
         echo "$i ---- $j <br>";
     }
-?>
+    ?>
 
 
-<h3>bucle while</h3>
-<?php
+    <h3>bucle while</h3>
+    <?php
 
     //sumar los numeros pares que se generan aleatoriamente hasta el 0
-    $numero = rand(0,10);
+    $numero = rand(0, 10);
     $total = 0 + $numero;
 
     while ($numero != 0) {
@@ -256,110 +257,167 @@
         if ($numero % 2 == 0) {
             $total += $numero;
         }
-        $numero = rand(0,10);
-
+        $numero = rand(0, 10);
     }
     echo "el total es $total";
 
-?>
+    ?>
 
     <h3>do while</h3>
 
-<?php
+    <?php
     //contar cuantos numeros impares se generan aleatoriamente hasta que se genera uno geativo
 
 
     $total = 0;
 
     do {
-        $numero = rand(-5,50);
+        $numero = rand(-5, 50);
         echo "el numero generado es: $numero <br>";
-        if (abs($numero) % 2 == 1) 
+        if (abs($numero) % 2 == 1)
             $total++;
-
-
     } while ($numero >= 0);
     echo "se han generado $total numeros"
 
-?>
+    ?>
     <h3>sentencia break y continue</h3>
-<?php
+    <?php
     // bucle repetir hasta romper con break
 
     do {
-        $numero = rand(0,20);
+        $numero = rand(0, 20);
         if ($numero % 3 == 0) $total++;
 
         echo "el numero es $numero <br>";
-        if ($numero == 0 ) break;
-
-
+        if ($numero == 0) break;
     } while (true);
 
-    // Generar números aleatorios ntre 1 y 10. Sumar los pares hasta 
-    // que la suma sea superior a 100 o se hayan generado 20 números
 
-    echo "<h3>GENERAR NÚMEROS PARES</h3>";
+    // generar numeros alatorios entre 1 y 10 y sumar lospares
+    //hasta que la sima sea superior a 100 o se hayan generado
+    //como maximo 20 numeros
 
     $suma_pares = 0;
-    $contador = 20;
-
-    while (True) {
-        $numero = rand(1,10);
-        
+    $contador = 0;
+    while (true) {
+        $numero = rand(1, 10);
         if ($numero % 2 == 0)
-            $suma_pares += 0;
+            $suma_pares += $numero;
 
         if ($suma_pares > 100) break;
 
-        if ($contador == 20) break;
-
         $contador++;
+        if ($contador == 20) break;
     }
 
-    echo "<p>Se han generado $contador números y la suma de los pares es $suma_pares</p>";
+    echo "se han generado $contador numeros y la suma de los pares es $suma_pares <br>";
 
-    // Generar 200 números aleatorios entre 1 y 1000. Por cada número se comprueba
-    // cuántos números primos hay desde 1 hasta ese número. Si hay más de 10 números
-    // primos que termine. Al final visualizar cada número generado y los primos
-    // hasta ese número
 
-    for ($numeroDe200 = 0; $numeroDe200 < 200; $numeroDe200++) {
-        $numero = rand(1,1000);
-        $cantidadPrimos = 0;
+    //break con argumento numerico
+    // break adminte un argumento numerico para indicar 
+    // de que bucle salirse. solo funciona en bucles anidados
 
-        echo "<p>El número generado es $numero: Primos:</p>";
+    //generar 200 numeros aleatorios entre 1 y 1000
+    //por cada numero se comprueba cuantos numeros primos hay desde 1 hasta ese numero
+    // si mas de  10 numeros primos que termine la ejecucion
+    //al final visualizar cada numero generado y los primos hasta ese numero
 
-        for ($posiblePrimo = 1; $posiblePrimo < $numero; $posiblePrimo++) {
+    for ($i = 0; $i < 200; $i++) {
+        $numero = rand(1, 100);
+        echo "El numero generado es: $numero <br>";
+        $cuantos_primos = 0;
 
-            // Comprobar si $posiblePrimo es número primo
+        for ($j = 1; $j < $numero; $j++) {
+            // Averiguar si $j es primo
             $es_primo = true;
-            $raiz_cuadrada = sqrt($posiblePrimo);
-            $maximoCoincidenciasPrimos = 2; // TODO
-
-            while ($es_primo && $maximoCoincidenciasPrimos < sqrt($posiblePrimo)) {
-                if ($posiblePrimo % $maximoCoincidenciasPrimos == 0) $es_primo = false;
-                $maximoCoincidenciasPrimos++;
+            $raiz_cuadrada = $j ** 0.5;
+            $k = 2;
+            while ($es_primo && $k <= $raiz_cuadrada) {
+                if ($j % $k == 0) $es_primo = false;
+                $k++;
             }
-
+            // Como podemos saber si el numero $j es primo
             if ($es_primo) {
-                echo " $posiblePrimo";
-                $cantidadPrimos++;
+                echo "$j ";
+                $cuantos_primos++;
 
-                if ($cantidadPrimos > 10) break 2; // Break 2 sale del anterior bucle del que se encuentra
+                if ($cuantos_primos > 10) break 1;
             }
-
-        }   
-
-        echo "<br>";    
+        }
     }
 
-    // Genera 10 números aleatorios
-    // POr cada uno genera tantos caracteres en minúscula aleatorios como ese número
-    // Si alguno de los caracteres generados es z se acaba y no se generan
+    //genera 10 numeros aleatorios
+    //por cada uno genera tanto caracteres en minuscula alatorios como ese numero
+    // si alguno de los caracteres generados de la A a la Z
+    //si alguno es Z acaba la ejecucion
+    // si el numero generado es impar que genere otro
+    echo "<br><br><br><br>";
+    for ($i = 0; $i < 10; $i++) {
+        $numero = rand(1, 10);
+        if ($numero % 2 == 1) continue;
+        echo $numero;
+        for ($j = 1; $j <= $numero; $j++) {
+            //genero un caracter alatorios
+            $codigo_ascii_letra = rand(97, 122);
+            $caracter = chr($codigo_ascii_letra);
+            echo $caracter;
 
-    echo "<p>" . chr(97) . "</p>";
-?>
+            if ($caracter == "z") break 2;
+        }
+        echo "<br>";
+    }
+
+
+    for ($i = 0; $i < 200; $i++) {
+        $numero = rand(1, 100);
+        echo "El numero generado es: $numero <br>";
+        $cuantos_primos = 0;
+
+        for ($j = 1; $j < $numero; $j++) {
+            // Averiguar si $j es primo
+            $es_primo = true;
+            $raiz_cuadrada = $j ** 0.5;
+            $k = 2;
+            while ($es_primo && $k <= $raiz_cuadrada) {
+                if ($j % $k == 0) $es_primo = false;
+                $k++;
+            }
+            // Como podemos saber si el numero $j es primo
+            if ($es_primo) {
+                echo "$j ";
+                $cuantos_primos++;
+
+                if ($cuantos_primos > 10) break 1;
+            }
+        }
+    }
+
+    ?>
+    <h3>sintaxis alternatica a las estructuras de control</h3>
+
+    <?php
+
+    $numero = rand(1, 100);
+    if ($numero % 2 == 0) {
+        echo "el numero $numero es par <br>";
+    } else {
+        echo "el numero $numero es impar <br>";
+    }
+
+    for ($i = 1; $i <= 10; $i++) {
+        echo "$i x $numero = ", $i * $numero . "<br>";
+        $i--;
+    }
+    while ($i > 0) {
+        echo "el valor de i es $i";
+    }
+
+    ?>
+
+
+
+    <br><br><br><br><br>
+
 </body>
 
 </html>
